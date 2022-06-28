@@ -1,6 +1,6 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat\Exceptions;
+namespace Vance\LaravelNotificationWechat\Exceptions;
 
 class AccessTokenException extends Exception
 {

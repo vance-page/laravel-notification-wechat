@@ -1,8 +1,8 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat\Exceptions;
+namespace Vance\LaravelNotificationWechat\Exceptions;
 
-use Yansongda\LaravelNotificationWechat\Contracts\AccessTokenInterface;
+use Vance\LaravelNotificationWechat\Contracts\AccessTokenInterface;
 
 class SendTemplateMessageException extends Exception
 {
@@ -16,14 +16,12 @@ class SendTemplateMessageException extends Exception
     /**
      * Bootstrap.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param string                      $message
      * @param string|int                  $code
      * @param array                       $raw
      * @param AccessTokenInterface | null $credential
      */
-    public function __construct($message, $code = Exception::SEND_TEMPLATE_MESSAGE_ERROR, $raw = [], $credential = null)
+    public function __construct(string $message, $code = Exception::SEND_TEMPLATE_MESSAGE_ERROR, $raw = [], $credential = null)
     {
         parent::__construct($message, $code, $raw);
 

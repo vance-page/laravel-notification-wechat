@@ -1,10 +1,10 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat;
+namespace Vance\LaravelNotificationWechat;
 
-use Yansongda\LaravelNotificationWechat\Contracts\AccessTokenInterface;
-use Yansongda\LaravelNotificationWechat\Exceptions\SendTemplateMessageException;
-use Yansongda\Supports\Traits\HasHttpRequest;
+use Vance\LaravelNotificationWechat\Contracts\AccessTokenInterface;
+use Vance\LaravelNotificationWechat\Exceptions\SendTemplateMessageException;
+use Vance\LaravelNotificationWechat\Traits\HasHttpRequest;
 
 class Wechat
 {
@@ -26,10 +26,8 @@ class Wechat
 
     /**
      * Bootstrap.
-     *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param AccessTokenInterface $credential
+     *
      */
     public function __construct(AccessTokenInterface $credential)
     {
@@ -38,16 +36,11 @@ class Wechat
 
     /**
      * Send template message.
-     *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param string $params
-     *
-     * @throws SendTemplateMessageException
-     *
      * @return array
+     * @throws SendTemplateMessageException
      */
-    public function sendMessage($params)
+    public function sendMessage(string $params): array
     {
         $data = $this->post('message/template/send', $params, [
             'query' => [
@@ -55,7 +48,7 @@ class Wechat
             ],
         ]);
 
-        if ($data['errcode'] != 0) {
+        if ($data['errcode'] !== 0) {
             throw new SendTemplateMessageException($data['errmsg'], $data['errcode'], $data, $this->credential);
         }
 

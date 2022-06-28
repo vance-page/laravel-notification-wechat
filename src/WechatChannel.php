@@ -1,11 +1,11 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat;
+namespace Vance\LaravelNotificationWechat;
 
 use Illuminate\Notifications\Notification;
-use Yansongda\LaravelNotificationWechat\Contracts\AccessTokenInterface;
-use Yansongda\LaravelNotificationWechat\Credentials\DefaultCredential;
-use Yansongda\LaravelNotificationWechat\Exceptions\SendTemplateMessageException;
+use Vance\LaravelNotificationWechat\Contracts\AccessTokenInterface;
+use Vance\LaravelNotificationWechat\Credentials\DefaultCredential;
+use Vance\LaravelNotificationWechat\Exceptions\SendTemplateMessageException;
 
 class WechatChannel
 {
@@ -19,8 +19,6 @@ class WechatChannel
     /**
      * Bootstrap.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param Wechat $wechat
      */
     public function __construct(Wechat $wechat)
@@ -30,8 +28,6 @@ class WechatChannel
 
     /**
      * Send the given notification.
-     *
-     * @author yansongda <me@yansongda.cn>
      *
      * @param mixed        $notifiable
      * @param Notification $notification

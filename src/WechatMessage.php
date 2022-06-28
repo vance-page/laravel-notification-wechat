@@ -1,8 +1,6 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat;
-
-use Yansongda\Supports\Collection;
+namespace Vance\LaravelNotificationWechat;
 
 class WechatMessage
 {
@@ -23,8 +21,6 @@ class WechatMessage
     /**
      * Bootstrap.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param mixed $credential
      */
     public function __construct($credential = null)
@@ -34,8 +30,6 @@ class WechatMessage
 
     /**
      * Create a new instance.
-     *
-     * @author yansongda <me@yansongda.cn>
      *
      * @param mixed $credential
      *
@@ -48,8 +42,6 @@ class WechatMessage
 
     /**
      * Target user.
-     *
-     * @author yansongda <me@yansongda.cn>
      *
      * @param string $openid
      *
@@ -65,13 +57,11 @@ class WechatMessage
     /**
      * Target template id.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param string $template_id
      *
      * @return WechatMessage
      */
-    public function template($template_id)
+    public function template(string $template_id)
     {
         $this->payload['template_id'] = $template_id;
 
@@ -81,13 +71,11 @@ class WechatMessage
     /**
      * Template's target url.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param string $url
      *
      * @return WechatMessage
      */
-    public function url($url)
+    public function url(string $url)
     {
         $this->payload['url'] = $url;
 
@@ -97,14 +85,12 @@ class WechatMessage
     /**
      * Template's target miniprogram.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param string $appid
      * @param string $pagepath
      *
      * @return WechatMessage
      */
-    public function miniprogram($appid, $pagepath)
+    public function miniprogram(string $appid, string $pagepath)
     {
         $this->payload['miniprogram']['appid'] = $appid;
         $this->payload['miniprogram']['pagepath'] = $pagepath;
@@ -115,8 +101,6 @@ class WechatMessage
     /**
      * Target data.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param array $data
      *
      * @return WechatMessage
@@ -125,7 +109,7 @@ class WechatMessage
     {
         foreach ($data as $k => $v) {
             $this->payload['data'][$k] = is_array($v) ?
-                ['value' => (new Collection($v))->first(), 'color' => (new Collection($v))->last()] :
+                ['value' => reset($v), 'color' => end($v)] :
                 ['value' => $v, 'color' => '#173177'];
         }
 
@@ -134,8 +118,6 @@ class WechatMessage
 
     /**
      * Convent payload to json format.
-     *
-     * @author yansongda <me@yansongda.cn>
      *
      * @return string
      */

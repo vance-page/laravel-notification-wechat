@@ -1,13 +1,11 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat\Contracts;
+namespace Vance\LaravelNotificationWechat\Contracts;
 
 interface AccessTokenInterface
 {
     /**
      * Get access token.
-     *
-     * @author yansongda <me@yansongda.cn>
      *
      * @return string
      */

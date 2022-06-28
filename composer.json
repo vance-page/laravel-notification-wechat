@@ -1,41 +1,42 @@
 {
-    "name": "yansongda/laravel-notification-wechat",
+    "name": "vance-page/laravel-notification-wechat",
     "description": "Laravel Wechat Notifications Driver",
     "keywords": ["laravel", "wechat", "notification", "template"],
     "support": {
-        "issues": "https://github.com/yansongda/laravel-notification-wechat/issues",
-        "source": "https://github.com/yansongda/laravel-notification-wechat"
+        "issues": "https://github.com/vance-page/laravel-notification-wechat/issues",
+        "source": "https://github.com/vance-page/laravel-notification-wechat"
     },
     "authors": [
         {
-            "name": "yansongda",
-            "email": "me@yansongda.cn"
+            "name": "vance",
+            "homepage": "https://github.com/vance-page"
         }
     ],
     "require": {
-        "php": ">=7.0",
-        "illuminate/notifications": "^5.5 || ^6.0",
-        "illuminate/support": "^5.5 || ^6.0",
-        "yansongda/supports": "^1.8 || ^2.0"
+        "php": "^7.4 || ^8.0",
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/notifications": "^6.0 || ^7.0 || ^7.0 || ^9.0",
+        "illuminate/support": "^6.0 || ^7.0 || ^7.0 || ^9.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.2",
-        "laravel/framework": "^5.5"
+        "phpunit/phpunit": "^6.2"
     },
     "autoload": {
         "psr-4": {
-            "Yansongda\\LaravelNotificationWechat\\": "src"
+            "Vance\\LaravelNotificationWechat\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yansongda\\LaravelNotificationWechat\\Tests\\": "tests"
+            "Vance\\LaravelNotificationWechat\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Yansongda\\LaravelNotificationWechat\\WechatServiceProvider"
+                "Vance\\LaravelNotificationWechat\\WechatServiceProvider"
             ]
         }
     },

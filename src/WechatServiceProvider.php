@@ -1,10 +1,10 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat;
+namespace Vance\LaravelNotificationWechat;
 
 use Illuminate\Support\ServiceProvider;
-use Yansongda\LaravelNotificationWechat\Credentials\DefaultCredential;
-use Yansongda\LaravelNotificationWechat\Credentials\EasyWechatCredential;
+use Vance\LaravelNotificationWechat\Credentials\DefaultCredential;
+use Vance\LaravelNotificationWechat\Credentials\EasyWechatCredential;
 
 class WechatServiceProvider extends ServiceProvider
 {

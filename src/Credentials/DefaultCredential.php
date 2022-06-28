@@ -1,11 +1,11 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat\Credentials;
+namespace Vance\LaravelNotificationWechat\Credentials;
 
 use Illuminate\Support\Facades\Cache;
-use Yansongda\LaravelNotificationWechat\Contracts\AccessTokenInterface;
-use Yansongda\LaravelNotificationWechat\Exceptions\AccessTokenException;
-use Yansongda\Supports\Traits\HasHttpRequest;
+use Vance\LaravelNotificationWechat\Contracts\AccessTokenInterface;
+use Vance\LaravelNotificationWechat\Exceptions\AccessTokenException;
+use Vance\LaravelNotificationWechat\Traits\HasHttpRequest;
 
 class DefaultCredential implements AccessTokenInterface
 {
@@ -42,8 +42,6 @@ class DefaultCredential implements AccessTokenInterface
     /**
      * Bootstrap.
      *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param string|null $appid
      * @param string|null $appsecret
      */
@@ -55,14 +53,10 @@ class DefaultCredential implements AccessTokenInterface
 
     /**
      * Set wechat access_token.
-     *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @param string $token
-     *
      * @return DefaultCredential
      */
-    public function setAccessToken($token)
+    public function setAccessToken(string $token): DefaultCredential
     {
         $this->accessToken = $token;
 
@@ -71,11 +65,7 @@ class DefaultCredential implements AccessTokenInterface
 
     /**
      * Get wechat access_token.
-     *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @throws AccessTokenException
-     *
      * @return string
      */
     public function getAccessToken()
@@ -103,14 +93,10 @@ class DefaultCredential implements AccessTokenInterface
 
     /**
      * requestForAccessToken.
-     *
-     * @author yansongda <me@yansongda.cn>
-     *
      * @throws AccessTokenException
-     *
      * @return array
      */
-    protected function requestForAccessToken()
+    protected function requestForAccessToken(): array
     {
         $data = $this->get('token', [
             'grant_type' => 'client_credential',

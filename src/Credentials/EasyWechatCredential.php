@@ -1,8 +1,8 @@
 <?php
 
-namespace Yansongda\LaravelNotificationWechat\Credentials;
+namespace Vance\LaravelNotificationWechat\Credentials;
 
-use Yansongda\LaravelNotificationWechat\Contracts\AccessTokenInterface;
+use Vance\LaravelNotificationWechat\Contracts\AccessTokenInterface;
 
 class EasyWechatCredential implements AccessTokenInterface
 {
@@ -15,8 +15,6 @@ class EasyWechatCredential implements AccessTokenInterface
 
     /**
      * Bootstrap.
-     *
-     * @author osi <yaoiluo@gmail.cn>
      */
     public function __construct()
     {
@@ -24,8 +22,6 @@ class EasyWechatCredential implements AccessTokenInterface
 
     /**
      * Set wechat access_token.
-     *
-     * @author yansongda <me@yansongda.cn>
      *
      * @param string $token
      *
@@ -40,8 +36,6 @@ class EasyWechatCredential implements AccessTokenInterface
 
     /**
      * Get wechat access_token.
-     *
-     * @author osi <yaoiluo@gmail.cn>
      *
      * @return string
      */

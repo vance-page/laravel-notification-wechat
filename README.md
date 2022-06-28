@@ -1,12 +1,12 @@
 <h1 align="center">laravel-notification-wechat</h1>
 
 <p align="center">
-    <a href="https://packagist.org/packages/yansongda/laravel-notification-wechat"><img src="https://poser.pugx.org/yansongda/laravel-notification-wechat/v/stable" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/yansongda/laravel-notification-wechat"><img src="https://poser.pugx.org/yansongda/laravel-notification-wechat/v/unstable" alt="Latest Unstable Version"></a>
-    <a href="https://packagist.org/packages/yansongda/laravel-notification-wechat"><img src="https://poser.pugx.org/yansongda/laravel-notification-wechat/license" alt="License"></a>
+    <a href="https://packagist.org/packages/vance-page/laravel-notification-wechat"><img src="https://poser.pugx.org/vance-page/laravel-notification-wechat/v/stable" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/vance-page/laravel-notification-wechat"><img src="https://poser.pugx.org/vance-page/laravel-notification-wechat/v/unstable" alt="Latest Unstable Version"></a>
+    <a href="https://packagist.org/packages/vance-page/laravel-notification-wechat"><img src="https://poser.pugx.org/vance-page/laravel-notification-wechat/license" alt="License"></a>
 </p>
 
-不知道大家有没有基于 laravel 的消息通知开发过微信的模板消息通知，我反正是开发过多次了，以前开发总是写在 app 目录下，然后又一坨都写在自定义的 WechatChannel 里面，看这心里总是不舒服。多次之后，就有了这个……
+基于 laravel 的消息通知开发过微信的模板消息通知
 
 ## 运行环境
 - PHP 5.6+
@@ -14,10 +14,10 @@
 
 ## 安装
 1. composer  
-`composer require yansongda/laravel-notification-wechat`
+`composer require vance-page/laravel-notification-wechat`
 
 2. 注册 serviceprovider （ < laravel 5.5 ）  
-`Yansongda\LaravelNotificationWechat\WechatServiceProvider::class`
+`Vance\NotificationChannels\WechatServiceProvider::class`
 
 ## 使用
 ### 例子
@@ -29,8 +29,8 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
-use Yansongda\LaravelNotificationWechat\WechatChannel;
-use Yansongda\LaravelNotificationWechat\WechatMessage;
+use Vance\NotificationChannels\WechatChannel;
+use Vance\NotificationChannels\WechatMessage;
 
 class WechatNotification extends Notification
 {
@@ -78,7 +78,7 @@ class WechatNotification extends Notification
 微信发送模板消息时需要传递 accesstoken ，这里有三种方法去处理，方便与您现有的微信开发框架所集成。
 
 - 直接传递 accesstoken 值到 `WechatMessage::create($accesstoken)` 方法中，如上例所示；
-- 传递一个 `Yansongda\LaravelNotificatinoWechat\Contracts\AccessTokenInterface` 类到 `WechatMessage::create($CredentialClass)` 方法；
+- 传递一个 `Vance\LaravelNotificatinoWechat\Contracts\AccessTokenInterface` 类到 `WechatMessage::create($CredentialClass)` 方法；
 - 直接在 config 文件夹中的 services.php 中添加 `'wechat' => ['appid' => 'xxx', 'appsecret' => 'xxx']`，系统将自动获取 accesstoken 并缓存，缓存的 key 为 `wechatAccessToken您的APPID` 您可以直接通过 laravel 的 Cache Facade 获取缓存的 accesstoken，当然，最保险的方案是通过 `(new Yansongda\LaravelNotificationWechat\Credential($appid, $appsecret))->getAccessToken()` 去获取 accesstoken。
 - 若使用EasyWechat(laravel包)且正常通信后，`WechatMessage::create()` 参数留空即可
 
